@@ -1,0 +1,119 @@
+.chart {
+  margin: 0;
+}
+.chart__title {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--ink-700);
+  margin-bottom: var(--sp-4);
+}
+.chart__empty {
+  font-size: var(--text-sm);
+  color: var(--ink-400);
+  padding: var(--sp-5) 0;
+  text-align: center;
+}
+
+/* Bilah */
+.chart__bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.chart__barrow {
+  display: grid;
+  grid-template-columns: minmax(90px, 34%) 1fr auto;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.chart__barlabel {
+  font-size: var(--text-sm);
+  color: var(--ink-600);
+}
+.chart__bartrack {
+  height: 10px;
+  background: var(--line-soft);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.chart__barfill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+.chart__barvalue {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-900);
+  min-width: 32px;
+  text-align: right;
+}
+
+/* Donat & gauge */
+.chart__donutwrap {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+  flex-wrap: wrap;
+}
+.chart__donut,
+.chart__gauge {
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+}
+.chart__gauge {
+  width: 120px;
+  height: 120px;
+}
+.chart__donuttrack {
+  fill: none;
+  stroke: var(--line-soft);
+  stroke-width: 16;
+}
+.chart__gauge .chart__donuttrack {
+  stroke-width: 12;
+}
+.chart__donutvalue {
+  text-anchor: middle;
+  font-size: 20px;
+  font-weight: 700;
+  fill: var(--ink-900);
+}
+.chart__donutlabel {
+  text-anchor: middle;
+  font-size: 10px;
+  fill: var(--ink-500);
+}
+.chart__legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.chart__legend li {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  color: var(--ink-600);
+}
+.chart__legend strong {
+  margin-left: auto;
+  color: var(--ink-900);
+  font-variant-numeric: tabular-nums;
+}
+.chart__swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.chart__caption {
+  font-size: var(--text-sm);
+  color: var(--ink-500);
+  max-width: 24ch;
+}

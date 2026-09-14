@@ -1,0 +1,155 @@
+.qlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.qrow {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-4) var(--sp-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-5);
+  flex-wrap: wrap;
+}
+.qrow__main {
+  flex: 1;
+  min-width: 240px;
+}
+.qrow__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.qrow__title {
+  font-size: var(--text-md);
+}
+.qrow__title a {
+  color: var(--ink-900);
+  text-decoration: none;
+}
+.qrow__title a:hover {
+  color: var(--blue-600);
+  text-decoration: underline;
+}
+.qrow__meta {
+  font-size: var(--text-xs);
+  color: var(--ink-500);
+}
+.qrow__due {
+  font-size: var(--text-sm);
+  color: var(--ink-600);
+  margin-top: 6px;
+}
+.qrow__due--late {
+  color: var(--danger);
+  font-weight: 600;
+}
+.qrow__side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  align-items: stretch;
+  min-width: 180px;
+}
+
+/* ---------------- Wizard pengisian ---------------- */
+.wizard {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: var(--sp-5);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .wizard {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wizard__nav {
+  position: sticky;
+  top: calc(var(--topbar-h) + var(--sp-4));
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-4);
+}
+@media (max-width: 900px) {
+  .wizard__nav {
+    position: static;
+  }
+}
+.wizard__steps {
+  list-style: none;
+  margin: 0 0 var(--sp-4);
+  padding: 0;
+}
+.wizard__step {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--text-sm);
+  color: var(--ink-600);
+}
+.wizard__step:hover {
+  background: var(--surface-sunk);
+}
+.wizard__step[aria-current='step'] {
+  background: var(--blue-50);
+  color: var(--blue-600);
+  font-weight: 600;
+}
+.wizard__mark {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  color: var(--ink-400);
+}
+.wizard__step--done .wizard__mark {
+  background: var(--success);
+  border-color: var(--success);
+  color: #fff;
+}
+.wizard__stepname {
+  flex: 1;
+  min-width: 0;
+}
+.wizard__stepcount {
+  font-size: var(--text-xs);
+  color: var(--ink-400);
+}
+
+.wizard__actions {
+  display: flex;
+  gap: var(--sp-3);
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: var(--sp-5);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--line-soft);
+}
+.wizard__saved {
+  font-size: var(--text-xs);
+  color: var(--ink-500);
+}
