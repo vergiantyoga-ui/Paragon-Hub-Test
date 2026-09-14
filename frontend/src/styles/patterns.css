@@ -1,0 +1,460 @@
+/* ============================================================
+   Pola tata letak yang dipakai lintas halaman.
+   Dipisah dari token supaya global.css tetap berisi dasar saja.
+   ============================================================ */
+
+/* Kepala halaman sederhana untuk layar tanpa jejak navigasi */
+.page-head {
+  margin-bottom: var(--sp-5);
+}
+.page-head h1 {
+  font-size: var(--text-xl);
+}
+.page-head p {
+  color: var(--ink-500);
+  max-width: 72ch;
+  margin-top: var(--sp-2);
+}
+
+/* ------------------------------------------------------------
+   Antrian: daftar di kiri, detail di kanan
+   ------------------------------------------------------------ */
+.queue-layout {
+  display: grid;
+  grid-template-columns: minmax(250px, 310px) minmax(0, 1fr);
+  gap: var(--sp-5);
+  align-items: start;
+}
+@media (max-width: 1000px) {
+  .queue-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.queue-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-4);
+  position: sticky;
+  top: calc(var(--topbar-h) + var(--sp-4));
+}
+@media (max-width: 1000px) {
+  .queue-panel {
+    position: static;
+  }
+}
+
+.queue-filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-4);
+}
+.queue-filter {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--ink-600);
+  cursor: pointer;
+}
+.queue-filter:hover {
+  border-color: var(--blue-400);
+  color: var(--blue-600);
+}
+.queue-filter[aria-pressed='true'] {
+  background: var(--blue-600);
+  border-color: var(--blue-600);
+  color: #fff;
+}
+
+.queue-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.queue-item {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 2px;
+}
+.queue-item:hover {
+  background: var(--surface-sunk);
+}
+.queue-item[aria-current='true'] {
+  background: var(--blue-50);
+  border-color: var(--blue-100);
+}
+.queue-item__name {
+  display: block;
+  font-weight: 600;
+  font-size: var(--text-base);
+  margin-bottom: 2px;
+}
+.queue-item[aria-current='true'] .queue-item__name {
+  color: var(--blue-700);
+}
+.queue-item__meta {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--ink-500);
+  margin-bottom: var(--sp-2);
+}
+
+/* ------------------------------------------------------------
+   Kartu pilihan jalur onboarding
+   ------------------------------------------------------------ */
+.path-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--sp-4);
+}
+.path-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.path-card h3 {
+  font-size: var(--text-base);
+  font-weight: 700;
+}
+.path-card p {
+  font-size: var(--text-sm);
+  color: var(--ink-500);
+  flex: 1;
+}
+.path-card--locked {
+  background: var(--surface-sunk);
+  border-style: dashed;
+}
+
+/* ------------------------------------------------------------
+   Tahapan pemasok pada ringkasan
+   ------------------------------------------------------------ */
+.pipeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+.pipeline__step {
+  flex: 1 1 150px;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-sunk);
+  position: relative;
+}
+.pipeline__step + .pipeline__step::before {
+  content: '›';
+  position: absolute;
+  left: calc(var(--sp-2) * -1);
+  color: var(--ink-400);
+}
+.pipeline__num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--blue-100);
+  color: var(--blue-700);
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.pipeline__label {
+  flex: 1;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  min-width: 0;
+}
+.pipeline__count {
+  font-size: var(--text-md);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.pipeline__aside {
+  font-size: var(--text-sm);
+  color: var(--ink-500);
+  margin-top: var(--sp-4);
+}
+
+/* ------------------------------------------------------------
+   Garis waktu aktivitas
+   ------------------------------------------------------------ */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-sm);
+}
+.timeline li {
+  position: relative;
+  padding: 0 0 var(--sp-4) var(--sp-5);
+}
+.timeline li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.timeline li::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 16px;
+  bottom: 0;
+  width: 1px;
+  background: var(--line-soft);
+}
+.timeline li:last-child {
+  padding-bottom: 0;
+}
+.timeline li:last-child::after {
+  display: none;
+}
+.timeline li:first-child::before {
+  background: var(--blue-500);
+}
+.timeline time {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--ink-400);
+}
+
+/* ------------------------------------------------------------
+   Wizard profil
+   ------------------------------------------------------------ */
+.profile-layout {
+  display: grid;
+  grid-template-columns: minmax(200px, 250px) minmax(0, 1fr);
+  gap: var(--sp-6);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+  }
+}
+
+.profile-rail {
+  position: sticky;
+  top: calc(var(--topbar-h) + var(--sp-4));
+}
+@media (max-width: 900px) {
+  .profile-rail {
+    position: static;
+  }
+}
+
+.rail-group + .rail-group {
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--line-soft);
+}
+.rail-group__label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--ink-400);
+  margin-bottom: var(--sp-3);
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--sp-3);
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: var(--sp-5);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--line-soft);
+}
+
+.contact-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  background: var(--surface-sunk);
+}
+.contact-card + .contact-card {
+  margin-top: var(--sp-4);
+}
+.contact-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+  flex-wrap: wrap;
+}
+.contact-card__index {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--ink-700);
+}
+
+/* ------------------------------------------------------------
+   Layar persetujuan
+   ------------------------------------------------------------ */
+.consent-doc {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-sunk);
+  padding: var(--sp-4);
+  max-height: 320px;
+  overflow-y: auto;
+}
+.consent-doc h3 {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.consent-doc article + article {
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--line-soft);
+}
+.consent-doc p {
+  font-size: var(--text-sm);
+  color: var(--ink-600);
+  line-height: 1.6;
+}
+.consent-doc__ref {
+  font-size: var(--text-xs);
+  color: var(--blue-600);
+  font-weight: 600;
+}
+
+.consent-check {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  background: var(--surface);
+}
+.consent-check + .consent-check {
+  margin-top: var(--sp-3);
+}
+.consent-check--checked {
+  border-color: var(--success);
+  background: var(--success-bg);
+}
+
+/* ------------------------------------------------------------
+   Layar galat render
+   ------------------------------------------------------------ */
+.crash {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: var(--sp-5);
+  background: var(--page);
+}
+.crash__card {
+  max-width: 620px;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow-card);
+}
+.crash__title {
+  font-size: var(--text-xl);
+  margin-bottom: var(--sp-3);
+}
+.crash__lede {
+  color: var(--ink-500);
+  margin-bottom: var(--sp-5);
+}
+.crash__actions {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-5);
+}
+.crash__details summary {
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink-600);
+}
+.crash__details pre {
+  margin-top: var(--sp-3);
+  padding: var(--sp-4);
+  background: var(--surface-sunk);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  color: var(--ink-700);
+}
+
+/* ------------------------------------------------------------
+   Kelompok dan dokumen pada bagian Data Pajak
+   ------------------------------------------------------------ */
+.taxgroup__title {
+  font-size: var(--text-md);
+  font-weight: 700;
+  margin-bottom: var(--sp-2);
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid var(--line-soft);
+}
+.taxgroup__lede {
+  font-size: var(--text-sm);
+  color: var(--ink-500);
+  margin-bottom: var(--sp-4);
+  max-width: 72ch;
+}
+.taxgroup__derived {
+  font-weight: 600;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunk);
+  color: var(--ink-700);
+}
+
+.taxdoc {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  margin-bottom: var(--sp-4);
+  background: var(--surface-sunk);
+}
+.taxdoc__legend {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--ink-700);
+  padding: 0 var(--sp-2);
+}
+.taxdoc__optional {
+  font-weight: 400;
+  color: var(--ink-400);
+  margin-left: var(--sp-2);
+  font-size: var(--text-xs);
+}
