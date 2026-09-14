@@ -16,4 +16,4 @@ ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 
 EXPOSE 4000
-CMD ["node", "src/index.js"]
+CMD ["sh", "-c", "echo DEBUG-START; node src/index.js; echo DEBUG-EXIT-CODE=$?; sleep 300"]
