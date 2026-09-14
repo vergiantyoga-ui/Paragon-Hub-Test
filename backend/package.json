@@ -1,0 +1,23 @@
+{
+  "name": "paragon-supplier-hub-api",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "API dan basis data SQLite untuk Paragon Supply Collaboration Hub",
+  "main": "src/index.js",
+  "engines": { "node": ">=18.17" },
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "migrate": "node scripts/migrate.js",
+    "seed": "node scripts/seed.js",
+    "reset": "node scripts/reset.js",
+    "test": "node test/api-check.mjs"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
